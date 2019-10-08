@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:10:23 by saich             #+#    #+#             */
-/*   Updated: 2019/10/08 12:27:36 by saich            ###   ########.fr       */
+/*   Created: 2019/10/08 14:55:55 by saich             #+#    #+#             */
+/*   Updated: 2019/10/08 15:14:27 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/libft.h"
-#include <libc.h>
 
-char	*ft_strchr(const char *s, int c)
+int		ft_atoi(const char *nptr)
 {
 	int i;
-	char *str;
+	int k;
+	int sign;
 
-	if (s == '\0')
-		return (0);
 	i = 0;
-	str = (char*)s;
-	while (str[i])
+	sign = 1;
+	k = 0;
+	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (str[i] == (char)c)
-			return (&str[i]);
+		if (nptr[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (0);
+	while (nptr[i] > 47 && nptr[i] < 58)
+		k = (k * 10) + nptr[i++] - '0';
+	return (k * sign);
 }
 
-int main()
+int main(int ac, char **av)
 {
-	char str[4] = "fgh";
-	printf("%s", ft_strchr(str, 103));
+	(void)ac;
+	printf("%d", ft_atoi(av[1]));
 }

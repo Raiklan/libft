@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:10:23 by saich             #+#    #+#             */
-/*   Updated: 2019/10/08 12:27:36 by saich            ###   ########.fr       */
+/*   Created: 2019/10/08 12:37:26 by saich             #+#    #+#             */
+/*   Updated: 2019/10/08 12:50:26 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/libft.h"
 #include <libc.h>
 
-char	*ft_strchr(const char *s, int c)
+int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int i;
-	char *str;
+	char *str1;
+	char *str2;
+	size_t i;
 
-	if (s == '\0')
-		return (0);
 	i = 0;
-	str = (char*)s;
-	while (str[i])
-	{
-		if (str[i] == (char)c)
-			return (&str[i]);
+	str1 = (char *) s1;
+	str2 = (char *) s2;
+	while (i < n && str1[i] && str1[i] == str2[i])
 		i++;
-	}
-	return (0);
+	return (str1[i] - str2[i]);
 }
 
 int main()
 {
-	char str[4] = "fgh";
-	printf("%s", ft_strchr(str, 103));
+	char s1[4] = "fgh";
+	char s2[4] = "fgh";
+	printf("%i", ft_strncmp(s1, s2, 5));
 }

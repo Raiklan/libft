@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:10:23 by saich             #+#    #+#             */
-/*   Updated: 2019/10/08 12:27:36 by saich            ###   ########.fr       */
+/*   Created: 2019/10/08 16:41:14 by saich             #+#    #+#             */
+/*   Updated: 2019/10/08 16:45:12 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/libft.h"
-#include <libc.h>
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+char *ft_strdup(const char *s)
 {
 	int i;
-	char *str;
+	char *dest;
 
-	if (s == '\0')
-		return (0);
 	i = 0;
-	str = (char*)s;
-	while (str[i])
+	while (s[i])
+		i++;
+	if (!(dest = malloc(sizeof(char) * i + 1)))
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		if (str[i] == (char)c)
-			return (&str[i]);
+		dest[i] = s[i];
 		i++;
 	}
-	return (0);
-}
-
-int main()
-{
-	char str[4] = "fgh";
-	printf("%s", ft_strchr(str, 103));
+	dest[i] = '\0';
+	return (dest);
 }

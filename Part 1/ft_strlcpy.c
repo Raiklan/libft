@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:10:23 by saich             #+#    #+#             */
-/*   Updated: 2019/10/08 12:27:36 by saich            ###   ########.fr       */
+/*   Created: 2019/10/08 12:51:23 by saich             #+#    #+#             */
+/*   Updated: 2019/10/08 13:01:14 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/libft.h"
-#include <libc.h>
 
-char	*ft_strchr(const char *s, int c)
+size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int i;
 	char *str;
+	size_t i;
 
-	if (s == '\0')
-		return (0);
+	str = (char *)src;
 	i = 0;
-	str = (char*)s;
-	while (str[i])
+	while (str[i] && i < dstsize)
 	{
-		if (str[i] == (char)c)
-			return (&str[i]);
+		dst[i] = str[i];
 		i++;
 	}
-	return (0);
-}
-
-int main()
-{
-	char str[4] = "fgh";
-	printf("%s", ft_strchr(str, 103));
+	dst[i] = '\0';
+	return(i);
 }
