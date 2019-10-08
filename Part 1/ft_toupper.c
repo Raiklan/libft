@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 14:47:05 by saich             #+#    #+#             */
-/*   Updated: 2019/10/07 16:41:32 by saich            ###   ########.fr       */
+/*   Created: 2019/10/07 17:01:43 by saich             #+#    #+#             */
+/*   Updated: 2019/10/07 17:07:48 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/libft.h"
 #include <libc.h>
 
-void *ft_memchr(const void *s, int c, size_t n)
+int	ft_toupper(int c)
 {
-	size_t i;
-	char *str;
-
-	if (s == NULL)
-		return (NULL); 
-	i = 0;
-	str = (void*)s;
-	while (i < n)
-	{
-		if (str[i] == (char)c)
-			return (&str[i]);
-		i++;
-	}
-	return (NULL);
-}
-
-int main()
-{
-	char str[5] = "fgh";
-	printf("%s", ft_memchr(str, 'g', 2));
+	if (c > 96 && c < 123)
+		return (c - 32);
+	return (c);
 }

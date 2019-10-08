@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 14:47:05 by saich             #+#    #+#             */
-/*   Updated: 2019/10/07 16:41:32 by saich            ###   ########.fr       */
+/*   Created: 2019/10/07 17:10:23 by saich             #+#    #+#             */
+/*   Updated: 2019/10/07 17:31:08 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/libft.h"
 #include <libc.h>
 
-void *ft_memchr(const void *s, int c, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t i;
+	int i;
 	char *str;
 
-	if (s == NULL)
-		return (NULL); 
+	if (s == '\0')
+		return (0);
 	i = 0;
-	str = (void*)s;
-	while (i < n)
+	str = (char*)s;
+	while (str[i])
 	{
 		if (str[i] == (char)c)
 			return (&str[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
 int main()
 {
-	char str[5] = "fgh";
-	printf("%s", ft_memchr(str, 'g', 2));
+	char str[4] = "fgh";
+	printf("%s", ft_strchr(str, 103));
 }

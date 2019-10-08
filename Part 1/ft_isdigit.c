@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 14:47:05 by saich             #+#    #+#             */
-/*   Updated: 2019/10/07 16:41:32 by saich            ###   ########.fr       */
+/*   Created: 2019/10/07 16:32:29 by saich             #+#    #+#             */
+/*   Updated: 2019/10/07 16:35:20 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/libft.h"
-#include <libc.h>
-
-void *ft_memchr(const void *s, int c, size_t n)
+int		ft_isdigit(char c)
 {
-	size_t i;
-	char *str;
-
-	if (s == NULL)
-		return (NULL); 
-	i = 0;
-	str = (void*)s;
-	while (i < n)
-	{
-		if (str[i] == (char)c)
-			return (&str[i]);
-		i++;
-	}
-	return (NULL);
-}
-
-int main()
-{
-	char str[5] = "fgh";
-	printf("%s", ft_memchr(str, 'g', 2));
+	if (c > 47 && c < 58)
+		return (1);
+	return (0);
 }
