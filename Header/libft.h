@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:52:15 by saich             #+#    #+#             */
-/*   Updated: 2019/10/08 16:33:49 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/09 16:51:33 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define LIBFT_H
 # include <string.h>
 # include <stdio.h>
+# include <stdlib.h>
 
 typedef		long unsigned int size_t;
+
+size_t ft_strlen(const char *s);
 
 #endif
