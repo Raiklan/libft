@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 16:22:51 by saich             #+#    #+#             */
-/*   Updated: 2019/10/09 15:41:16 by saich            ###   ########.fr       */
+/*   Created: 2019/10/09 12:19:52 by saich             #+#    #+#             */
+/*   Updated: 2019/10/09 12:27:03 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/libft.h"
 
-size_t		ft_strlen(const char *str)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char *dest;
 	size_t i;
 
+	if(!(dest = malloc(sizeof(char) * len)))
+		return (0);
 	i = 0;
-	while (str[i])
+	while (i < len)
+	{
+		dest[i] = s[start];
+		start++;
 		i++;
-	return (i);
+	}
+	return (dest);
 }

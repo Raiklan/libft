@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:55:55 by saich             #+#    #+#             */
-/*   Updated: 2019/10/09 15:47:13 by saich            ###   ########.fr       */
+/*   Created: 2019/10/09 12:27:42 by saich             #+#    #+#             */
+/*   Updated: 2019/10/09 16:50:37 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/libft.h"
-#include <libc.h>
+#include <stdlib.h>
 
-int		ft_atoi(const char *nptr)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	int i;
-	int k;
-	int sign;
+	char *str;
 	size_t j;
+	size_t i;
 
+	if(!(str = malloc(sizeof(char) * (strlen(s1) + strlen(s2) - 1))))
+		return (0);
 	i = 0;
-	sign = 1;
-	k = 0;
-	j = ft_strlen(nptr);
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	j = 0;
+	while (i < strlen(s1))
 	{
-		if (nptr[i] == '-')
-			sign = -1;
+		str[i] = s1[i];
 		i++;
 	}
-	j -= i;
-	if (j > 19 && sign == 1)
-		return (-1);
-	if (j > 18 && sign ==-1)
-		return (0);
-	while (nptr[i] > 47 && nptr[i] < 58)
-		k = (k * 10) + nptr[i++] - '0';
-	return (k * sign);
+	while (j < strlen(s2))
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }
 
 int main(int ac, char **av)
 {
 	(void)ac;
-	printf("%d\n", ft_atoi(av[1]));
-	printf("%d", atoi(av[2]));
+	printf("%s", ft_strjoin(av[1], av[2]));
 }
