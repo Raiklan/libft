@@ -1,52 +1,43 @@
 SHELL               =   /bin/zsh
 # Executable name
 NAME                =   libft.a
-NAME_BONUS          =   libft_bonus.a
 # Compilation
 CC                  =   gcc -Wall -Wextra -Werror
 # Name
 SRC_NAME            =   ft_atoi.c               \
-                        ft_bzero.c              \
-                        ft_calloc.c             \
-                        ft_isalnum.c            \
-                        ft_isalpha.c            \
-                        ft_isascii.c            \
-                        ft_isdigit.c            \
-                        ft_isprint.c            \
-                        ft_itoa.c               \
-                        ft_memccpy.c            \
-                        ft_memchr.c             \
-                        ft_memcmp.c             \
-                        ft_memcpy.c             \
-                        ft_memset.c             \
-                        ft_putchar_fd.c         \
-                        ft_putendl.c            \
-                        ft_putnbr_fd.c          \
-                        ft_putstr_fd.c          \
-                        ft_split.c              \
-                        ft_strchr.c             \
-                        ft_strdup.c             \
-                        ft_strjoin.c            \
-                        ft_strlcat.c            \
-                        ft_strlcpy.c            \
-                        ft_strlen.c             \
-                        ft_strmapi.c            \
-                        ft_strncmp.c            \
-                        ft_strnstr.c            \
-                        ft_strrchr.c            \
-                        ft_strtrim.c            \
-                        ft_substr.c             \
-                        ft_tolower.c            \
-                        ft_toupper.c            \
-SRC_BONUS_NAME      =   ft_lstadd_back_bonus.c  \
-                        ft_lstadd_front_bonus.c \
-                        ft_lstclear_bonus.c     \
-                        ft_lstdelone_bonus.c    \
-                        ft_lstiter_bonus.c      \
-                        ft_lstlast_bonus.c      \
-                        ft_lstmap_bonus.c       \
-                        ft_lstnew_bonus.c       \
-                        ft_lstsize_bonus.c      \
+						ft_bzero.c              \
+						ft_calloc.c             \
+						ft_isalnum.c            \
+						ft_isalpha.c            \
+						ft_isascii.c            \
+						ft_isdigit.c            \
+						ft_isprint.c            \
+						ft_itoa.c               \
+						ft_memccpy.c            \
+						ft_memchr.c             \
+						ft_memcmp.c             \
+						ft_memcpy.c             \
+						ft_memset.c             \
+						ft_putchar_fd.c         \
+						ft_putendl_fd.c         \
+						ft_putnbr_fd.c          \
+						ft_putstr_fd.c          \
+						ft_split.c              \
+						ft_strchr.c             \
+						ft_strdup.c             \
+						ft_strjoin.c            \
+						ft_strlcat.c            \
+						ft_strlcpy.c            \
+						ft_strlen.c             \
+						ft_strmapi.c            \
+						ft_strncmp.c            \
+						ft_strnstr.c            \
+						ft_strrchr.c            \
+						ft_strtrim.c            \
+						ft_substr.c             \
+						ft_tolower.c            \
+						ft_toupper.c            \
+
 INCLUDE_NAME        =   libft.h
 # Path
 SRC_PATH            =   ./src/
@@ -54,10 +45,7 @@ OBJ_PATH            =   ./obj/
 INCLUDE_PATH        =   ./include/
 # Name + Path
 SRC                 =   $(addprefix $(SRC_PATH),        $(SRC_NAME))
-SRC_BONUS           =   $(addprefix $(SRC_PATH),        $(SRC_BONUS_NAME))
 OBJ                 =   $(patsubst  $(SRC_PATH)%.c,     $(OBJ_PATH)%.o, $(SRC))
-OBJ_BONUS           =   $(patsubst  $(SRC_PATH)%.c,     $(OBJ_PATH)%.o, \
-                        $(SRC_BONUS))
 INCLUDE             =   $(addprefix $(INCLUDE_PATH),    $(INCLUDE_NAME))
 # Text format
 _DEF                =   $'\033[0m
@@ -87,20 +75,17 @@ _IGREY              =   $'\033[47m
 .PHONY: all bonus clean fclean re
 all: $(NAME)
 $(NAME): $(OBJ)
-    @ar rc $(NAME) $(OBJ)
-    @ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE)
-    @mkdir -p $(OBJ_PATH)
-    @$(CC) -I $(INCLUDE_PATH) -c $< -o $@
-    @echo "$(_END)$(_GREEN)[OK]\t$(_UNDER)$(_YELLOW)\t"   \
-        "COMPILE :$(_END)$(_BOLD)$(_WHITE)\t$<"
-bonus: $(OBJ_BONUS)
-    @ar rc $(NAME_BONUS) $(OBJ_BONUS)
-    @ranlib $(NAME_BONUS)
+	@mkdir -p $(OBJ_PATH)
+	@$(CC) -I $(INCLUDE_PATH) -c $< -o $@
+	@echo "$(_END)$(_GREEN)[OK]\t$(_UNDER)$(_YELLOW)\t"   \
+		"COMPILE :$(_END)$(_BOLD)$(_WHITE)\t$<"
 clean:
-    rm -rf $(OBJ_PATH)
-    @echo "$(_YELLOW)Remove :\t$(_RED)" $(OBJ_PATH)"$(_END)"
+	rm -rf $(OBJ_PATH)
+	@echo "$(_YELLOW)Remove :\t$(_RED)" $(OBJ_PATH)"$(_END)"
 fclean: clean
-    @rm -f $(NAME)
-    @echo "$(_YELLOW)Remove :\t$(_RED)" $(NAME)
+	@rm -f $(NAME)
+	@echo "$(_YELLOW)Remove :\t$(_RED)" $(NAME)
 re: fclean all
