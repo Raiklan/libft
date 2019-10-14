@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:51:02 by saich             #+#    #+#             */
-/*   Updated: 2019/10/14 18:11:34 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/14 21:39:17 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 
 	i = 0;
 	while (dest[i] != '\0')
-		++i;
+		i++;
 	res = 0;
 	while (src[res] != '\0')
-		++res;
+		res++;
 	if (size <= i)
 		res += size;
 	else

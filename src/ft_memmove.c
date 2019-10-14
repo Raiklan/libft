@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:23:46 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:10:54 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/14 21:27:38 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	tmp;
-	size_t			i;
+	const unsigned char	*tmp2;
+	unsigned char		*tmp;
+	size_t				i;
 
 	i = 0;
-	while (i < n)
-	{
-		tmp = *(char*)src++;
-		*(char*)dest++ = tmp;
-		i++;
-	}
+	tmp = (unsigned char *)dest;
+	tmp2 = (unsigned char *)src;
+	if (tmp2 < tmp)
+		while (i++ <= n)
+			tmp[n - i] = tmp2[n - i];
+	else
+		while (n-- > 0)
+			*(tmp++) = *(tmp2++);
 	return (dest);
 }
