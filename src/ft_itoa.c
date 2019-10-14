@@ -6,13 +6,13 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 16:28:48 by saich             #+#    #+#             */
-/*   Updated: 2019/10/14 12:45:38 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/14 15:02:14 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		power(int nb, int powa)
+static int		power(long nb, int powa)
 {
 	if (powa < 0)
 		return (0);
@@ -33,21 +33,22 @@ char			*ft_itoa(int nbr)
 	char	*dest;
 	int		i;
 	int		j;
-	int		nb;
+	long	nb;
 
 	i = 0;
 	nb = nbr;
+	nbr == 0 ? i = 1 : 0;
 	while (nb != 0 && i++ <= 2147483647)
 		nb /= 10;
-	if (!(dest = malloc(sizeof(char) * i + nega(nb))))
+	if (!(dest = malloc(sizeof(char) * i + 1 + nega(nb))))
 		return (0);
 	j = 0;
 	nb = nbr;
-	if (nega(nbr) == 1)
+	if (nega(nb) == 1)
 	{
 		dest[0] = '-';
 		j = 1;
-		nb = -nbr;
+		nb = -nb;
 	}
 	while (i-- > 0)
 		dest[j++] = nb / power(10, i) % 10 + '0';
