@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itsmisa <itsmisa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 16:28:48 by saich             #+#    #+#             */
-/*   Updated: 2019/10/14 18:11:31 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 00:22:11 by itsmisa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char			*ft_itoa(int nbr)
 	nbr == 0 ? i = 1 : 0;
 	while (nb != 0 && i++ <= 2147483647)
 		nb /= 10;
-	if (!(dest = malloc(sizeof(char) * i + 1 + nega(nb))))
+	if (!(dest = malloc(sizeof(char) * i + 1 + (nbr < 0 ? 1 : 0))))
 		return (0);
 	j = 0;
 	nb = nbr;
