@@ -6,13 +6,13 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 16:28:48 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:07:52 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/14 12:45:38 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		power(int nb, int powa)
+static int		power(int nb, int powa)
 {
 	if (powa < 0)
 		return (0);
@@ -21,14 +21,14 @@ int		power(int nb, int powa)
 	return (nb * power(nb, powa - 1));
 }
 
-int		nega(int nbr)
+static int		nega(int nbr)
 {
 	if (nbr < 0)
 		return (1);
 	return (0);
 }
 
-char	*ft_itoa(int nbr)
+char			*ft_itoa(int nbr)
 {
 	char	*dest;
 	int		i;

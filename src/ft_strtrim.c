@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:23:14 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:26:15 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/13 19:33:39 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ char			*ft_strtrim(char const *s1, char const *set)
 	char	*res;
 
 	i = 0;
-	j = strlen(s1) - 1;
+	j = ft_strlen(s1) - 1;
 	k = 0;
 	while (s1[i] && in_set(set, s1[i]))
 		i++;
-	while (in_set(set, s1[j]) && j != 0 && i != strlen(s1))
+	while (in_set(set, s1[j]) && j != 0 && i != ft_strlen(s1))
 		j--;
 	if (!(res = ft_calloc(sizeof(char) * (j + 1 - i) + 1, 1)))
 		return (NULL);
