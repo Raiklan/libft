@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:27:42 by saich             #+#    #+#             */
-/*   Updated: 2019/10/14 21:49:35 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 16:25:58 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	j;
 	size_t	i;
 
-	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)))))
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
+	if (!(str = malloc(sizeof(char) * (i + j) + 1)))
 		return (0);
 	i = 0;
 	j = 0;

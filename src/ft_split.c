@@ -6,92 +6,94 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 12:17:59 by exam              #+#    #+#             */
-/*   Updated: 2019/10/14 18:11:28 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 17:02:19 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	find_next_sep(const char *s1, char c)
+static int		loc_word(char *s, char c, unsigned int i)
 {
-	int			i;
+	int				word;
+	unsigned int	count_word;
+	unsigned int	loc;
 
-	i = 0;
-	while (s1[i])
+	word = 0;
+	count_word = 0;
+	loc = 0;
+	while (s[loc] != '\0')
 	{
-		if (s1[i] == c)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-static char	*ft_strddup(char *str, int n)
-{
-	char		*dest;
-	int			i;
-
-	i = 0;
-	if (!(dest = malloc(sizeof(char) * n + 1)))
-		return (NULL);
-	while (i < n)
-	{
-		dest[i] = str[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-static int	ft_count(char *str, char charset)
-{
-	int			i;
-	int			j;
-	int			count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		j = find_next_sep(&str[i], charset);
-		if (j > 0)
+		if (word == 0 && s[loc] != c)
 		{
-			count++;
+			count_word++;
+			if (count_word == i + 1)
+				break ;
+			word = 1;
 		}
-		else if (j == -1)
-		{
-			count++;
-			j = 1;
-			break ;
-		}
-		i += j + 1;
+		else if (word == 1 && s[loc] == c)
+			word = 0;
+		loc++;
 	}
-	return (count);
+	return (loc);
 }
 
-char		**ft_split(char const *str, char charset)
+static int		count(char *s, char c)
 {
-	size_t		i;
-	size_t		n;
-	char		*st;
-	char		**re;
+	int				word;
+	unsigned int	count_word;
 
-	i = 0;
+	count_word = 0;
+	word = 0;
+	while (*s != '\0')
+	{
+		if (word == 0 && *s != c)
+		{
+			count_word++;
+			word = 1;
+		}
+		else if (word == 1 && *s == c)
+			word = 0;
+		s++;
+	}
+	return (count_word);
+}
+
+static char		*put_word(char *s, char c)
+{
+	unsigned int	i;
+	unsigned int	n;
+	char			*res;
+
 	n = 0;
-	st = (char *)str;
-	if (!(re = malloc(sizeof(char *) * ft_count(st, charset) + 1)))
-		return (NULL);
-	while (i < ft_strlen(st))
+	while (s[n] != '\0' && s[n] != c)
+		n++;
+	res = (char*)malloc(sizeof(char) * (n + 1));
+	i = 0;
+	while (i < n)
+		res[i++] = *s++;
+	res[i] = '\0';
+	return (res);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	unsigned int	nb;
+	unsigned int	i;
+	char			**res;
+	char			*str;
+
+	if (!s)
+		return (0);
+	str = (char*)s;
+	nb = count(str, c);
+	if (!(res = (char**)malloc(sizeof(char*) * (nb + 1))))
+		return (0);
+	i = 0;
+	while (i < nb)
 	{
-		if (find_next_sep(&st[i], charset) > 0)
-			re[n++] = ft_strddup(&st[i], find_next_sep(&st[i], charset));
-		else if (find_next_sep(&st[i], charset) == -1)
-		{
-			re[n++] = ft_strddup(&st[i], ft_strlen(st));
-			break ;
-		}
-		i += find_next_sep(&st[i], charset) + 1;
+		res[i] = put_word(str + loc_word(str, c, i), c);
+		i++;
 	}
-	re[n] = NULL;
-	return (re);
+	res[i] = 0;
+	return (res);
 }

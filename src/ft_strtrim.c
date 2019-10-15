@@ -6,44 +6,52 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:23:14 by saich             #+#    #+#             */
-/*   Updated: 2019/10/14 18:11:38 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 16:33:18 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		in_set(const char *s1, char c)
+static int	is_set(char c, char const *set)
 {
-	int		i;
+	unsigned int i;
 
+	if (!set)
+		return (0);
 	i = 0;
-	while (s1[i])
+	while (set[i] != '\0')
 	{
-		if (s1[i] == c)
+		if (set[i] == c)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
-	char	*res;
+	char			*start;
+	char			*end;
+	char			*ret;
+	int				len;
+	unsigned int	i;
 
+	if (!s1)
+		return (0);
+	start = (char *)s1;
+	end = (char *)s1 + ft_strlen(s1);
+	while (is_set(*start, set))
+		start++;
+	if (start < end)
+		end--;
+	while (is_set(*end, set))
+		end--;
+	len = end - start + 1;
+	if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
+		return (0);
 	i = 0;
-	j = ft_strlen(s1) - 1;
-	k = 0;
-	while (s1[i] && in_set(set, s1[i]))
-		i++;
-	while (in_set(set, s1[j]) && j != 0 && i != ft_strlen(s1))
-		j--;
-	if (!(res = ft_calloc(sizeof(char) * (j + 1 - i) + 1, 1)))
-		return (NULL);
-	while (i <= j)
-		res[k++] = s1[i++];
-	res[i] = '\0';
-	return (res);
+	while (len-- > 0)
+		ret[i++] = *start++;
+	ret[i] = '\0';
+	return (ret);
 }

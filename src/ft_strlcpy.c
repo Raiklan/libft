@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:51:23 by saich             #+#    #+#             */
-/*   Updated: 2019/10/15 02:15:02 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 16:22:23 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i]  = '\0';
+	dst[i] = '\0';
 	return (len);
 }
