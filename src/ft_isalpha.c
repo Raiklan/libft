@@ -6,13 +6,13 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:26:42 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:27:44 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 17:26:05 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(char c)
+int		ft_isalpha(int c)
 {
 	if ((c > 64 && c < 91) || (c > 96 && c < 123))
 		return (1);

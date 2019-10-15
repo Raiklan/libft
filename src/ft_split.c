@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 12:17:59 by exam              #+#    #+#             */
-/*   Updated: 2019/10/15 17:02:19 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 17:37:29 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,11 @@ static char		*put_word(char *s, char c)
 	n = 0;
 	while (s[n] != '\0' && s[n] != c)
 		n++;
-	res = (char*)malloc(sizeof(char) * (n + 1));
+	if (!(res = (char*)malloc(sizeof(char) * (n + 1))))
+	{
+		free(res);
+		return (NULL);
+	}
 	i = 0;
 	while (i < n)
 		res[i++] = *s++;
@@ -87,7 +91,10 @@ char			**ft_split(char const *s, char c)
 	str = (char*)s;
 	nb = count(str, c);
 	if (!(res = (char**)malloc(sizeof(char*) * (nb + 1))))
+	{
+		free(res);
 		return (0);
+	}
 	i = 0;
 	while (i < nb)
 	{

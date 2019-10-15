@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:47:05 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:09:22 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 17:23:27 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	size_t	i;
 	char	*str;
 
-	if (s == NULL)
-		return (NULL);
 	i = 0;
 	str = (void*)s;
 	while (i < n)

@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:52:15 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:07:27 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/15 17:26:39 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 int			ft_atoi(const char *nptr);
 void		*ft_bzero (void *s, size_t len);
-int			ft_isalnum(char c);
-int			ft_isalpha(char c);
-int			ft_isprint(char c);
-int			ft_isascii(char c);
-int			ft_isdigit(char c);
+int			ft_isalnum(int c);
+int			ft_isalpha(int c);
+int			ft_isprint(int c);
+int			ft_isascii(int c);
+int			ft_isdigit(int c);
 void		*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
