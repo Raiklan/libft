@@ -41,9 +41,9 @@ SRC_NAME            =   ft_atoi.c               \
 
 INCLUDE_NAME        =   libft.h
 # Path
-SRC_PATH            =   ./src/
+SRC_PATH            =   ./
 OBJ_PATH            =   ./obj/
-INCLUDE_PATH        =   ./include/
+INCLUDE_PATH        =   ./
 # Name + Path
 SRC                 =   $(addprefix $(SRC_PATH),        $(SRC_NAME))
 OBJ                 =   $(patsubst  $(SRC_PATH)%.c,     $(OBJ_PATH)%.o, $(SRC))
