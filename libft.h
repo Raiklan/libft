@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:52:15 by saich             #+#    #+#             */
-/*   Updated: 2019/10/16 15:54:08 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/16 16:00:31 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ char			*ft_strnstr(const char	*big, const char *little, size_t len);
 char			*ft_strrchr(const char *s, int c);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+t_list			*ft_lstnew(void *content);
 
 #endif

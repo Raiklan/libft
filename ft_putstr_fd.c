@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:00:20 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:30:18 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/16 17:37:03 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	ft_putstr_fd(char *s, int fd)
 	int i;
 
 	i = 0;
-	while (s[i])
+	if (s && fd >= 0)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		while (s[i])
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
 }
