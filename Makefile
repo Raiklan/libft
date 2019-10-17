@@ -1,79 +1,77 @@
-NAME = libft.a
-CFLAGS = -Wall -Wextra -Werror -I. -c
+#!/bin/sh
 SRCS = ft_memset.c \
-		ft_bzero.c \
-		ft_memcpy.c \
-		ft_memccpy.c \
-		ft_memmove.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_strlen.c \
-		ft_strlcpy.c \
-		ft_strlcat.c \
-		ft_strchr.c \
-		ft_strrchr.c \
-		ft_strnstr.c \
-		ft_strncmp.c \
-		ft_atoi.c \
-		ft_isalpha.c \
-		ft_isdigit.c \
-		ft_isalnum.c \
-		ft_isascii.c \
-		ft_isprint.c \
-		ft_toupper.c \
-		ft_tolower.c \
-		ft_calloc.c \
-		ft_strdup.c \
-		ft_substr.c \
-		ft_strjoin.c \
-		ft_strtrim.c \
-		ft_split.c \
-		ft_itoa.c \
-		ft_strmapi.c \
-		ft_putchar_fd.c \
-		ft_putstr_fd.c \
-		ft_putendl_fd.c \
-		ft_putnbr_fd.c
-SRCS_B = ft_lstnew_bonus.c \
-		ft_lstadd_front_bonus.c \
-		ft_lstsize_bonus.c \
-		ft_lstlast_bonus.c \
-		ft_lstadd_back_bonus.c \
-		ft_lstdelone_bonus.c \
-		ft_lstclear_bonus.c \
-		ft_lstiter_bonus.c \
-		ft_lstmap_bonus.c \
-		ft_strcat_bonus.c \
-		ft_strcpy_bonus.c \
-		ft_strjoinfree_bonus.c \
-		ft_isdigit_base_bonus.c \
-		ft_islower_bonus.c \
-		ft_isupper_bonus.c \
+    ft_bzero.c \
+    ft_memcpy.c \
+    ft_memccpy.c \
+    ft_memmove.c \
+    ft_memchr.c \
+    ft_memcmp.c \
+    ft_strlen.c \
+    ft_isalpha.c \
+    ft_isdigit.c \
+    ft_isalnum.c \
+    ft_isascii.c \
+    ft_isprint.c \
+    ft_toupper.c \
+    ft_tolower.c \
+    ft_strchr.c \
+    ft_strrchr.c \
+    ft_strncmp.c \
+    ft_strlcpy.c \
+    ft_strlcat.c \
+    ft_strnstr.c \
+    ft_atoi.c \
+    ft_calloc.c \
+    ft_strdup.c \
+    ft_substr.c \
+    ft_strjoin.c \
+	ft_strtrim.c \
+    ft_split.c \
+	ft_itoa.c \
+	ft_strmapi.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c
+SRCS_BONUS = ft_lstnew_bonus.c \
+	ft_lstadd_front_bonus.c \
+	ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c \
+	ft_lstadd_back_bonus.c \
+	ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c \
+	ft_lstiter_bonus.c \
+	ft_lstmap_bonus.c \
+	ft_strcat_bonus.c \
+	ft_strcpy_bonus.c \
+	ft_strjoinfree_bonus.c \
+	ft_isdigit_base_bonus.c \
+	ft_islower_bonus.c \
+	ft_isupper_bonus.c \
 
-OBJECTS = $(SRCS:%.c=%.o)
+OBJS = ${SRCS:.c=.o}
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+NAME = libft.a
+HEADER = .
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -c -I ${HEADER} 
 
-OBJECTS_B = $(SRCS_B:%.c=%.o)
-
-all : $(NAME)
-
-$(NAME) : $(OBJECTS)
-		ar rcs $(NAME) $(OBJECTS)
-
-$(OBJECTS) : $(SRCS)
-		gcc $(CFLAGS) $(SRCS)
-
-$(OBJECTS_B) : $(SRCS_B)
-		gcc $(CFLAGS) $(SRCS_B)
-
-bonus : fclean $(OBJECTS) $(OBJECTS_B)
-	@ar rcs libft.a $(OBJECTS) $(OBJECTS_B)
+all : ${NAME}	
 
 clean : 
-	@rm -f $(OBJECTS) $(OBJECTS_B)
+		rm -f ${OBJS} ${OBJS_BONUS}
 
 fclean : clean
-	@rm -f $(NAME)
+		 rm -f ${NAME}
+
+$(NAME) : ${OBJS}
+		  ar rc ${NAME} ${OBJS}
+		  ranlib ${NAME}
 
 re : fclean all
 
-.PHONY : all bonus fclean clean re
+bonus : ${OBJS} ${OBJS_BONUS}
+		ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
+		ranlib ${NAME}
+
+.PHONY : all clean re fclean libft.a
