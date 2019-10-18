@@ -6,18 +6,18 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:23:46 by saich             #+#    #+#             */
-/*   Updated: 2019/10/15 23:55:37 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/18 14:52:19 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void					*ft_memmove(void *dest, const void *src, size_t n)
+void					*ft_memmove(void *dst, const void *src, size_t n)
 {
 	unsigned char		*d;
 	unsigned const char	*s;
 
-	d = dest;
+	d = dst;
 	s = src;
 	if (!d && !s)
 		return (NULL);
@@ -31,5 +31,5 @@ void					*ft_memmove(void *dest, const void *src, size_t n)
 		while (n--)
 			*d++ = *s++;
 	}
-	return (dest);
+	return (dst);
 }

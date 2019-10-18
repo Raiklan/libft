@@ -6,20 +6,20 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:55:55 by saich             #+#    #+#             */
-/*   Updated: 2019/10/15 20:11:22 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/18 14:46:29 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	whitespace(const char *nptr, size_t i)
+static int	whitespace(const char *str, size_t i)
 {
-	if (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+	if (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		return (1);
 	return (0);
 }
 
-int			ft_atoi(const char *nptr)
+int			ft_atoi(const char *str)
 {
 	size_t	i;
 	int		sign;
@@ -30,18 +30,18 @@ int			ft_atoi(const char *nptr)
 	sign = 1;
 	i = 0;
 	j = 0;
-	while (whitespace(nptr, i) == 1)
+	while (whitespace(str, i) == 1)
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (nptr[i] == '-')
+		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		j++;
-		result = result * 10 + (nptr[i++] - '0');
+		result = result * 10 + (str[i++] - '0');
 	}
 	j > 18 && sign == -1 ? result = 0 : 0;
 	j > 19 && sign == 1 ? result = -1 : 0;

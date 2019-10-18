@@ -6,20 +6,20 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 12:04:39 by saich             #+#    #+#             */
-/*   Updated: 2019/10/13 16:02:33 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/18 14:47:19 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t len)
+void	*ft_bzero(void *s, size_t n)
 {
 	char	*b;
 	size_t	i;
 
 	i = 0;
 	b = (char*)s;
-	while (i < len)
+	while (i < n)
 	{
 		b[i] = '\0';
 		i++;

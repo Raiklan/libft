@@ -45,7 +45,6 @@ SRCS_BONUS = ft_lstnew_bonus.c \
 	ft_strcat_bonus.c \
 	ft_strcpy_bonus.c \
 	ft_strjoinfree_bonus.c \
-	ft_isdigit_base_bonus.c \
 	ft_islower_bonus.c \
 	ft_isupper_bonus.c \
 	ft_itoa_base_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 17:44:36 by saich             #+#    #+#             */
-/*   Updated: 2019/10/18 12:51:38 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/18 15:00:42 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (lst)
 	{
 		if (!(new = ft_lstnew(f(lst->content))))
+		{
 			ft_lstdelone(new, del);
+			return (NULL);
+		}
 		new->next = ft_lstmap(lst->next, f, del);
 		return (new);
 	}
