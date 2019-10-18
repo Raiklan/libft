@@ -48,11 +48,12 @@ SRCS_BONUS = ft_lstnew_bonus.c \
 	ft_isdigit_base_bonus.c \
 	ft_islower_bonus.c \
 	ft_isupper_bonus.c \
+	ft_itoa_base_bonus.c \
 
 OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 NAME = libft.a
-HEADER = .
+HEADER = libft.h
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c -I ${HEADER} 
 
@@ -64,14 +65,14 @@ clean :
 fclean : clean
 		 rm -f ${NAME}
 
-$(NAME) : ${OBJS}
+$(NAME) : ${OBJS} ${HEADER}
 		  ar rc ${NAME} ${OBJS}
 		  ranlib ${NAME}
 
 re : fclean all
 
-bonus : ${OBJS} ${OBJS_BONUS}
+bonus : ${OBJS} ${OBJS_BONUS} ${HEADER}
 		ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
 		ranlib ${NAME}
 
-.PHONY : all clean re fclean libft.a
+.PHONY : all clean re fclean

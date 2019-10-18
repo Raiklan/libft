@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:46:52 by saich             #+#    #+#             */
-/*   Updated: 2019/10/16 16:49:45 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/18 11:34:02 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	int i;
-
-	i = 0;
-	while (i < ft_lstsize(lst) - 1)
+	while (lst)
 	{
-		i++;
+		if (!(lst->next))
+			return (lst);
 		lst = lst->next;
 	}
 	return (lst);
