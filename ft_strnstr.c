@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:57:08 by saich             #+#    #+#             */
-/*   Updated: 2019/10/18 14:57:05 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/21 16:39:23 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,24 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*str;
-	char	*to_find;
+	size_t	pos;
 	size_t	i;
-	size_t	j;
 
-	str = (char *)haystack;
-	to_find = (char *)needle;
-	i = 0;
-	j = 0;
-	if (to_find[i] == '\0')
-		return (str);
-	while (str[i] && i < len)
+	if (!*needle)
+		return ((char*)haystack);
+	pos = 0;
+	while (haystack[pos] != '\0' && pos < len)
 	{
-		i = i - j;
-		j = 0;
-		while (str[i] == to_find[j] && to_find[j++] && i < len)
+		if (haystack[pos] == needle[0])
 		{
-			if (to_find[j] == '\0')
-				return (&str[i - j + 1]);
-			i++;
+			i = 1;
+			while (needle[i] != '\0' && (pos + i) < len
+					&& haystack[pos + i] == needle[i])
+				i++;
+			if (needle[i] == '\0')
+				return ((char*)haystack + pos);
 		}
-		i++;
+		pos++;
 	}
 	return (0);
 }

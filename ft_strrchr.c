@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:29:12 by saich             #+#    #+#             */
-/*   Updated: 2019/10/14 15:55:22 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/21 16:25:34 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int len;
+	char	*start;
+	char	*cur;
 
-	len = ft_strlen(s);
-	while (len != 0 && s[len] != c)
-		len--;
-	if (s[len] == (char)c)
-		return ((char *)&s[len]);
-	return (NULL);
+	start = (char*)s;
+	cur = start;
+	while (*cur != '\0')
+		cur++;
+	while (cur >= start)
+	{
+		if (*cur == (char)c)
+			return (cur);
+		cur--;
+	}
+	return (0);
 }
