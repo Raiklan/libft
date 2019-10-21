@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:37:26 by saich             #+#    #+#             */
-/*   Updated: 2019/10/21 16:28:12 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/21 16:48:48 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*str1;
 	unsigned char	*str2;
-	size_t				i;
+	size_t			i;
 
 	i = 0;
 	str1 = (unsigned char *)s1;
