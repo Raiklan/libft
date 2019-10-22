@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:55:55 by saich             #+#    #+#             */
-/*   Updated: 2019/10/21 16:32:42 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/22 16:57:48 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			ft_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 		result = result * 10 + (str[i++] - '0');
 	return (sign * result);
 }
