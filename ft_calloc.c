@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 16:47:17 by saich             #+#    #+#             */
-/*   Updated: 2019/10/20 20:05:35 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/22 17:41:48 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void *dest;
 
+	if (count == 0 || size == 0)
+	{
+		count = 1;
+		size = 1;
+	}
 	if (!(dest = malloc(size * count)))
 		return (NULL);
 	ft_bzero(dest, count * size);

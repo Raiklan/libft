@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 12:04:39 by saich             #+#    #+#             */
-/*   Updated: 2019/10/18 14:47:19 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/22 17:49:42 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,5 @@
 
 void	*ft_bzero(void *s, size_t n)
 {
-	char	*b;
-	size_t	i;
-
-	i = 0;
-	b = (char*)s;
-	while (i < n)
-	{
-		b[i] = '\0';
-		i++;
-	}
-	return (s);
+	return (ft_memset(s, 0, n));
 }
