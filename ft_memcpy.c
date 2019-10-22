@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 12:08:33 by saich             #+#    #+#             */
-/*   Updated: 2019/10/22 17:45:49 by saich            ###   ########.fr       */
+/*   Updated: 2019/10/22 18:50:11 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*dest;
 	unsigned char	*source;
 
